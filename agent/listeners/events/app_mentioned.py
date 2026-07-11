@@ -1,6 +1,5 @@
 from logging import Logger
 
-from openai.types.responses import ResponseInputParam
 from slack_bolt import Say
 from slack_sdk import WebClient
 
@@ -45,7 +44,7 @@ def app_mentioned_callback(client: WebClient, event: dict, logger: Logger, say: 
             recipient_user_id=user_id,
             thread_ts=thread_ts,
         )
-        prompts: ResponseInputParam = [
+        prompts: list[dict] = [
             {
                 "role": "user",
                 "content": text,

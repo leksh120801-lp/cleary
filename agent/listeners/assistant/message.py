@@ -1,7 +1,6 @@
 import time
 from logging import Logger
 
-from openai.types.responses import ResponseInputParam
 from slack_bolt import BoltContext, Say, SetStatus
 from slack_sdk import WebClient
 from slack_sdk.models.messages.chunk import (
@@ -147,7 +146,7 @@ def message(
                 thread_ts=thread_ts,
                 task_display_mode="timeline",
             )
-            prompts: ResponseInputParam = [
+            prompts: list[dict] = [
                 {
                     "role": "user",
                     "content": message["text"],
